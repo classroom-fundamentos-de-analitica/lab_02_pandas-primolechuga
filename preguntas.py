@@ -160,9 +160,10 @@ def pregunta_10():
     2   C                    0:5:6:7:9
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
+    los numeros deben estar ordenados ascendentemente
     """
-    return tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(x.astype(str))).reset_index().set_index('_c1')
-
+    return tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str)))).reset_index().set_index('_c1')
+print(pregunta_10())
 
 def pregunta_11():
     """
