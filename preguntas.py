@@ -160,9 +160,10 @@ def pregunta_10():
     2   C                    0:5:6:7:9
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
+    las columnas deben llamarse _c1 y _c2
     """
 
-    return  tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(x.sort_values().astype(str))).reset_index()
+    return  tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(x.astype(str))).reset_index()
 
 
 def pregunta_11():
@@ -180,7 +181,6 @@ def pregunta_11():
     37   37  a,c,e,f
     38   38      d,e
     39   39    a,d,f
-    las letras deben estar en orden y separadas por coma.
     """
     return tbl1.groupby('_c0')['_c4'].apply(lambda x: ','.join(sorted(x))).reset_index()
 
@@ -200,7 +200,6 @@ def pregunta_12():
     37   37                    eee:0,fff:2,hhh:6
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
-    las letras deben estar en orden y separadas por coma.
     """
     return tbl2.assign(_c5=tbl2['_c5a'] + ':' + tbl2['_c5b'].astype(str)).groupby('_c0')['_c5'].apply(lambda x: ','.join(sorted(x))).reset_index()
 
